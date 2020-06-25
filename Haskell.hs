@@ -36,9 +36,9 @@ sumarElPrimero :: [Int] -> [Int]
 sumarElPrimero [] = []
 sumarElPrimero l = (sumarN (head l) (l))
 
---sumarElUltimo :: [Int] -> [Int]
---sumarElUltimo [] = []
---sumarElUltimo l = sumarElPrimero (reverso (l))
+sumarElUltimo :: [Int] -> [Int]
+sumarElUltimo [] = []
+sumarElUltimo l = reverso (sumarElPrimero (reverso (l)))
 
 pares :: [Int] -> [Int]
 pares [] = []
@@ -215,3 +215,13 @@ crearPar a b = (a,b)
 
 invertir :: (a,b) -> (b, a)
 invertir (a,b) = (b,a) 
+
+concatenar :: [Int] -> [Int] -> [Int]
+concatenar [] b = b
+concatenar a b = reverso2 (reverso2 a []) b 
+
+zipi :: [a] -> [b] -> [(a,b)]
+zipi [] _ = []
+zipi _ [] = []
+zipi c d = (head(c),head(d)): zipi (tail(c)) (tail(d))
+
